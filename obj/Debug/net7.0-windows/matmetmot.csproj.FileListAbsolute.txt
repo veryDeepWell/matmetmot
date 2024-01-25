@@ -1,0 +1,17 @@
+F:\_pro\_new\matmetmot\bin\Debug\net7.0-windows\matmetmot.exe
+F:\_pro\_new\matmetmot\bin\Debug\net7.0-windows\matmetmot.deps.json
+F:\_pro\_new\matmetmot\bin\Debug\net7.0-windows\matmetmot.runtimeconfig.json
+F:\_pro\_new\matmetmot\bin\Debug\net7.0-windows\matmetmot.dll
+F:\_pro\_new\matmetmot\bin\Debug\net7.0-windows\matmetmot.pdb
+F:\_pro\_new\matmetmot\obj\Debug\net7.0-windows\matmetmot.csproj.AssemblyReference.cache
+F:\_pro\_new\matmetmot\obj\Debug\net7.0-windows\matmetmot.Form1.resources
+F:\_pro\_new\matmetmot\obj\Debug\net7.0-windows\matmetmot.csproj.GenerateResource.cache
+F:\_pro\_new\matmetmot\obj\Debug\net7.0-windows\matmetmot.GeneratedMSBuildEditorConfig.editorconfig
+F:\_pro\_new\matmetmot\obj\Debug\net7.0-windows\matmetmot.AssemblyInfoInputs.cache
+F:\_pro\_new\matmetmot\obj\Debug\net7.0-windows\matmetmot.AssemblyInfo.cs
+F:\_pro\_new\matmetmot\obj\Debug\net7.0-windows\matmetmot.csproj.CoreCompileInputs.cache
+F:\_pro\_new\matmetmot\obj\Debug\net7.0-windows\matmetmot.dll
+F:\_pro\_new\matmetmot\obj\Debug\net7.0-windows\refint\matmetmot.dll
+F:\_pro\_new\matmetmot\obj\Debug\net7.0-windows\matmetmot.pdb
+F:\_pro\_new\matmetmot\obj\Debug\net7.0-windows\matmetmot.genruntimeconfig.cache
+F:\_pro\_new\matmetmot\obj\Debug\net7.0-windows\ref\matmetmot.dll
