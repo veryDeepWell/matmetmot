@@ -57,6 +57,8 @@
             label3 = new Label();
             textBox3 = new TextBox();
             textBox2 = new TextBox();
+            button9 = new Button();
+            button10 = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
@@ -246,6 +248,8 @@
             // 
             // panel4
             // 
+            panel4.Controls.Add(button10);
+            panel4.Controls.Add(button9);
             panel4.Controls.Add(dataGridView2);
             panel4.Controls.Add(button6);
             panel4.Location = new Point(1024, 232);
@@ -344,6 +348,24 @@
             textBox2.Size = new Size(127, 23);
             textBox2.TabIndex = 0;
             // 
+            // button9
+            // 
+            button9.Location = new Point(3, 168);
+            button9.Name = "button9";
+            button9.Size = new Size(128, 23);
+            button9.TabIndex = 8;
+            button9.Text = "РАСЧЕТ";
+            button9.UseVisualStyleBackColor = true;
+            // 
+            // button10
+            // 
+            button10.Location = new Point(3, 197);
+            button10.Name = "button10";
+            button10.Size = new Size(128, 23);
+            button10.TabIndex = 9;
+            button10.Text = "ОПТИМИЗАЦИЯ";
+            button10.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -402,5 +424,7 @@
         private Label label4;
         private Label label3;
         private Button button8;
+        private Button button10;
+        private Button button9;
     }
 }

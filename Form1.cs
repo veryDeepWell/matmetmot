@@ -74,7 +74,7 @@ namespace matmetmot
             {
                 MessageBox.Show("мейнппейрмши ббнд!");
             }
-            
+
             if (checkInputForStupid(rows, cols))
             {
                 foreach (var pan in this.Controls.OfType<Panel>())
