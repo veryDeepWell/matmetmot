@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace matmetmot
 {
@@ -59,15 +60,48 @@ namespace matmetmot
             this.Text = "«¿ƒ¿Õ»≈ 2";
         }
 
+        private void button8_Click(object sender, EventArgs e)
+        {
+            int rows = 0;
+            int cols = 0;
+
+            try
+            {
+                rows = Convert.ToInt32(textBox3.Text);
+                cols = Convert.ToInt32(textBox2.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Õ≈ Œ––≈ “Õ€… ¬¬Œƒ!");
+            }
+            
+            if (checkInputForStupid(rows, cols))
+            {
+                foreach (var pan in this.Controls.OfType<Panel>())
+                {
+                    pan.Visible = false;
+                }
+                this.Size = new System.Drawing.Size(panel4.Size.Width + 15, panel4.Size.Height + 40);
+                panel4.Visible = true;
+                this.Text = "«¿ƒ¿Õ»≈ 3";
+
+                setupForDataGrid(rows, cols);
+            }
+            else
+            {
+                MessageBox.Show("Õ≈ Œ––≈ “Õ€… ¬¬Œƒ!");
+            }
+        }
+
         private void button3_Click(object sender, EventArgs e)
         {
             foreach (var pan in this.Controls.OfType<Panel>())
             {
                 pan.Visible = false;
             }
-            this.Size = new System.Drawing.Size(panel4.Size.Width + 15, panel4.Size.Height + 40);
-            panel4.Visible = true;
-            this.Text = "«¿ƒ¿Õ»≈ 3";
+            this.Size = new System.Drawing.Size(panel5.Size.Width + 15, panel5.Size.Height + 40);
+            panel5.Visible = true;
+            this.Text = "¬¬Œƒ";
         }
 
         private void getBackToMainMenu()
@@ -95,6 +129,28 @@ namespace matmetmot
         private void button6_Click(object sender, EventArgs e)
         {
             getBackToMainMenu();
+        }
+
+        private bool checkInputForStupid(int valueA, int valueB)
+        {
+            if (valueA > 0 && valueB > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void setupForDataGrid(int amountOfRows, int amountOfColumns)
+        {
+            for (int i = 0; i < amountOfColumns; i++)
+            {
+                dataGridView2.Columns.Add("Column" + i, "œ" + (i + 1));
+            }
+
+            dataGridView2.Rows.Add(amountOfRows);
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -256,6 +312,96 @@ namespace matmetmot
                     bufferedGraphics.Render(e.Graphics);
                 }
             }
+        }
+
+        static void calculateTable()
+        {
+            int[] supply = new int[] { 50, 40, 20 };
+            int[] demand = new int[] { 30, 25, 30, 25 };
+            int[,] cost = new int[,]
+            {
+                {3, 2, 4, 6},
+                {2, 3, 1, 2},
+                {3, 2, 7, 4}
+            };
+
+            int[,] plan = northWestmethod(supply, demand);
+            int price = calculatePrice(cost, plan);
+
+            for (int i = 0; i < supply.Length; i++)
+            {
+                for (int j = 0; j < demand.Length; j++)
+                {
+                    //Console.Write("Coordinates:" + (i + 1) + ", " + (j + 1) + "; Value:" + plan[i, j] + "   ");
+                }
+
+                //Console.WriteLine();
+            }
+
+            //Console.WriteLine(String.Format("Total Price: {0}", price));
+        }
+
+        static int[,] northWestmethod(int[] _supply, int[] _demand)
+        {
+            int[] supply = _supply;
+            int[] demand = _demand;
+
+            int i = 0;
+            int j = 0;
+            int total = 0;
+
+            int[,] result = new int[(supply.Length), (demand.Length)];
+
+            while (total < supply.Length + supply.Length)
+            {
+                int s = supply[i];
+                int d = demand[j];
+                int v = 0;
+
+                if (s < d)
+                {
+                    v = s;
+                }
+                else
+                {
+                    v = d;
+                }
+
+                supply[i] -= v;
+                demand[j] -= v;
+
+                //Append result in result[]
+                result[i, j] = v;
+
+                //Check destination
+                if (supply[i] == 0 & i < supply.Length)
+                {
+                    i++;
+                    total++;
+                }
+                else if (demand[j] == 0 & j < demand.Length)
+                {
+                    j++;
+                    total++;
+                }
+            }
+
+            return result;
+        }
+
+        static int calculatePrice(int[,] costTable, int[,] supplyTable)
+        {
+            int result = 0;
+
+            for (int i = 0; i < supplyTable.GetLength(0); i++)
+            {
+                for (int j = 0; j < supplyTable.GetLength(1); j++)
+                {
+                    result += costTable[i, j] * supplyTable[i, j];
+                }
+            }
+
+            return result;
         }
     }
 }
