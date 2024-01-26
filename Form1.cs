@@ -168,7 +168,7 @@ namespace matmetmot
 
             result += solvePart1 + "\n"; //Время
             result += String.Format("X(1a) + X(1b) + X(1с) <= {0}", textBox1.Text) + "\n";
-            result += String.Format("X(1a) + X(1b) + X(1с) <= {0}", textBox1.Text) + "\n";
+            result += String.Format("X(2a) + X(2b) + X(2с) <= {0}", textBox1.Text) + "\n";
             result += solvePart2 + "\n"; //План
             result += String.Format("{0}X(1a) + {1}X(2a) >= {2}", dataGridView1.Rows[0].Cells[0].Value, dataGridView1.Rows[0].Cells[1].Value, dataGridView1.Rows[0].Cells[4].Value) + "\n";
             result += String.Format("{0}X(1b) + {1}X(2b) >= {2}", dataGridView1.Rows[1].Cells[0].Value, dataGridView1.Rows[1].Cells[1].Value, dataGridView1.Rows[1].Cells[4].Value) + "\n";
