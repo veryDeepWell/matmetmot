@@ -48,6 +48,12 @@
             label1 = new Label();
             button5 = new Button();
             panel4 = new Panel();
+            label7 = new Label();
+            textBox5 = new TextBox();
+            label6 = new Label();
+            textBox4 = new TextBox();
+            button10 = new Button();
+            button9 = new Button();
             dataGridView2 = new DataGridView();
             button6 = new Button();
             panel5 = new Panel();
@@ -57,8 +63,6 @@
             label3 = new Label();
             textBox3 = new TextBox();
             textBox2 = new TextBox();
-            button9 = new Button();
-            button10 = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
@@ -121,7 +125,7 @@
             panel2.Controls.Add(button4);
             panel2.Location = new Point(12, 232);
             panel2.Name = "panel2";
-            panel2.Size = new Size(500, 500);
+            panel2.Size = new Size(406, 407);
             panel2.TabIndex = 4;
             // 
             // pictureBox
@@ -137,7 +141,7 @@
             // 
             button4.Anchor = AnchorStyles.None;
             button4.Font = new Font("Roboto", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            button4.Location = new Point(434, 3);
+            button4.Location = new Point(387, -44);
             button4.Name = "button4";
             button4.Size = new Size(63, 23);
             button4.TabIndex = 3;
@@ -248,14 +252,70 @@
             // 
             // panel4
             // 
+            panel4.Controls.Add(label7);
+            panel4.Controls.Add(textBox5);
+            panel4.Controls.Add(label6);
+            panel4.Controls.Add(textBox4);
             panel4.Controls.Add(button10);
             panel4.Controls.Add(button9);
             panel4.Controls.Add(dataGridView2);
             panel4.Controls.Add(button6);
             panel4.Location = new Point(1024, 232);
             panel4.Name = "panel4";
-            panel4.Size = new Size(500, 500);
+            panel4.Size = new Size(500, 283);
             panel4.TabIndex = 5;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(3, 189);
+            label7.Name = "label7";
+            label7.Size = new Size(51, 15);
+            label7.TabIndex = 11;
+            label7.Text = "Запасы:";
+            // 
+            // textBox5
+            // 
+            textBox5.Location = new Point(105, 186);
+            textBox5.Name = "textBox5";
+            textBox5.Size = new Size(307, 23);
+            textBox5.TabIndex = 12;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(3, 160);
+            label6.Name = "label6";
+            label6.Size = new Size(83, 15);
+            label6.TabIndex = 10;
+            label6.Text = "Потребности:";
+            // 
+            // textBox4
+            // 
+            textBox4.Location = new Point(105, 157);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(307, 23);
+            textBox4.TabIndex = 10;
+            // 
+            // button10
+            // 
+            button10.Location = new Point(3, 244);
+            button10.Name = "button10";
+            button10.Size = new Size(128, 23);
+            button10.TabIndex = 9;
+            button10.Text = "ОПТИМИЗАЦИЯ";
+            button10.UseVisualStyleBackColor = true;
+            button10.Click += button10_Click;
+            // 
+            // button9
+            // 
+            button9.Location = new Point(3, 215);
+            button9.Name = "button9";
+            button9.Size = new Size(128, 23);
+            button9.TabIndex = 8;
+            button9.Text = "РАСЧЕТ";
+            button9.UseVisualStyleBackColor = true;
+            button9.Click += button9_Click;
             // 
             // dataGridView2
             // 
@@ -271,7 +331,7 @@
             // 
             button6.Anchor = AnchorStyles.None;
             button6.Font = new Font("Roboto", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            button6.Location = new Point(434, 3);
+            button6.Location = new Point(434, -106);
             button6.Name = "button6";
             button6.Size = new Size(63, 23);
             button6.TabIndex = 1;
@@ -348,24 +408,6 @@
             textBox2.Size = new Size(127, 23);
             textBox2.TabIndex = 0;
             // 
-            // button9
-            // 
-            button9.Location = new Point(3, 168);
-            button9.Name = "button9";
-            button9.Size = new Size(128, 23);
-            button9.TabIndex = 8;
-            button9.Text = "РАСЧЕТ";
-            button9.UseVisualStyleBackColor = true;
-            // 
-            // button10
-            // 
-            button10.Location = new Point(3, 197);
-            button10.Name = "button10";
-            button10.Size = new Size(128, 23);
-            button10.TabIndex = 9;
-            button10.Text = "ОПТИМИЗАЦИЯ";
-            button10.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -387,6 +429,7 @@
             panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel4.ResumeLayout(false);
+            panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
@@ -426,5 +469,9 @@
         private Button button8;
         private Button button10;
         private Button button9;
+        private Label label7;
+        private TextBox textBox5;
+        private Label label6;
+        private TextBox textBox4;
     }
 }

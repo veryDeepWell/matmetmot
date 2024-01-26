@@ -9,11 +9,12 @@ namespace matmetmot
 {
     public partial class Form1 : Form
     {
-        private bool shouldRedraw = true;
-
         private List<GraphicsPath> paths = new List<GraphicsPath>();
         private List<string> labels = new List<string>();
         private List<Color> colors = new List<Color>();
+
+        private int amountOfRows = 0;
+        private int amountOfColumns = 0;
 
         public Form1()
         {
@@ -69,6 +70,9 @@ namespace matmetmot
             {
                 rows = Convert.ToInt32(textBox3.Text);
                 cols = Convert.ToInt32(textBox2.Text);
+
+                amountOfRows = rows;
+                amountOfColumns = cols;
             }
             catch (Exception)
             {
@@ -147,7 +151,7 @@ namespace matmetmot
         {
             for (int i = 0; i < amountOfColumns; i++)
             {
-                dataGridView2.Columns.Add("Column" + i, "Ï" + (i + 1));
+                dataGridView2.Columns.Add("Column" + i, "");
             }
 
             dataGridView2.Rows.Add(amountOfRows);
@@ -178,6 +182,46 @@ namespace matmetmot
             label1.Text = result;
         }
 
+        private void button9_Click(object sender, EventArgs e)
+        {
+            int[] supply = textBox5.Text.Split(' ').Select(Int32.Parse).ToArray();
+            int[] demand = textBox4.Text.Split(' ').Select(Int32.Parse).ToArray();
+            int[,] cost = new int[dataGridView2.Rows.Count, dataGridView2.Columns.Count];
+
+            foreach (DataGridViewRow row in dataGridView2.Rows)
+            {
+                foreach (DataGridViewColumn col in dataGridView2.Columns)
+                {
+                    cost[row.Index, col.Index] = Convert.ToInt32(dataGridView2.Rows[row.Index].Cells[col.Index].Value);
+                }
+            }
+
+            int[,] costNew = new int[dataGridView2.Rows.Count - 1, dataGridView2.Columns.Count];
+
+            for (int i = 0; i < costNew.GetLength(0); i++)
+            {
+                for (int j = 0; j < costNew.GetLength(1); j++)
+                {
+                    costNew[i, j] = cost[i, j];
+                }
+            }
+
+            int[,] result = calculateTable(supply, demand, cost);
+
+            for (int i = 0; i < costNew.GetLength(0); i++)
+            {
+                for (int j = 0; j < costNew.GetLength(1); j++)
+                {
+                    dataGridView2.Rows[i].Cells[j].Value = result[i, j];
+                }
+            }
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void CenterPictureBox()
         {
             int x = (pictureBox.Width - pictureBox.DisplayRectangle.Width) / 2;
@@ -192,6 +236,12 @@ namespace matmetmot
             AddConstraint(-18, -9, -1296, Color.Red, "-18x1 - 9x2 >= -1296");
             AddConstraint(6, -27, -1008, Color.Green, "6x1 - 27x2 >= -1008");
             AddConstraint(-6, -9, -504, Color.Purple, "-6x1 - 9x2 <= -504");
+
+            //AddConstraint(2, 4, 244, Color.Blue, "6x1 + 27x2 >= 1152");
+            //AddConstraint(1, 8, 320, Color.Red, "-18x1 - 9x2 >= -1296");
+            //AddConstraint(-3, 4, -64, Color.Green, "6x1 - 27x2 >= -1008");
+            //AddConstraint(-4, 4, -132, Color.Purple, "-6x1 - 9x2 <= -504");
+            //AddConstraint(-4, -20, 492, Color.Yellow, "-6x1 - 9x2 <= -504");
         }
 
         private void AddConstraint(int a, int b, int c, Color color, string label)
@@ -314,31 +364,13 @@ namespace matmetmot
             }
         }
 
-        static void calculateTable()
+        static int[,] calculateTable(int[] _supply, int[] _demand, int[,] _cost)
         {
-            int[] supply = new int[] { 50, 40, 20 };
-            int[] demand = new int[] { 30, 25, 30, 25 };
-            int[,] cost = new int[,]
-            {
-                {3, 2, 4, 6},
-                {2, 3, 1, 2},
-                {3, 2, 7, 4}
-            };
+            int[] supply = _supply;
+            int[] demand = _demand;
+            int[,] cost = _cost;
 
-            int[,] plan = northWestmethod(supply, demand);
-            int price = calculatePrice(cost, plan);
-
-            for (int i = 0; i < supply.Length; i++)
-            {
-                for (int j = 0; j < demand.Length; j++)
-                {
-                    //Console.Write("Coordinates:" + (i + 1) + ", " + (j + 1) + "; Value:" + plan[i, j] + "   ");
-                }
-
-                //Console.WriteLine();
-            }
-
-            //Console.WriteLine(String.Format("Total Price: {0}", price));
+            return northWestmethod(supply, demand);
         }
 
         static int[,] northWestmethod(int[] _supply, int[] _demand)
